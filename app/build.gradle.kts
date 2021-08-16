@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id ("com.android.application")
+    id ("kotlin-android")
 }
 
 android {
@@ -18,7 +18,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            minifyEnabled = false
+            isMinifyEnabled = false
         }
     }
     buildFeatures {
