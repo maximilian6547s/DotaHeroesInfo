@@ -3,6 +3,7 @@ package com.maximcuker.hero_interactors
 import com.maximcuker.core.*
 import com.maximcuker.hero_datasource.network.HeroService
 import com.maximcuker.hero_domain.Hero
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -12,8 +13,10 @@ class GetHeroes(
 ) {
     fun execute(): Flow<DataState<List<Hero>>> = flow {
         try {
-            emit(DataState.Loading<List<Hero>>(progressBasState = ProgressBarState.Loading))
+            emit(DataState.Loading<List<Hero>>(progressBarState = ProgressBarState.Loading))
 
+            //for testing progressBar
+            delay(1000)
             val heroes: List<Hero> = try {
                 service.getHeroStats()
             } catch (e:Exception) {
@@ -45,7 +48,7 @@ class GetHeroes(
             )
         }
         finally {
-            emit(DataState.Loading(progressBasState = ProgressBarState.Idle))
+            emit(DataState.Loading(progressBarState = ProgressBarState.Idle))
         }
     }
 
