@@ -8,10 +8,12 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import coil.ImageLoader
 import com.maximcuker.core.ProgressBarState
 
 @Composable
 fun HeroList(
+    imageLoader: ImageLoader,
     state: HeroListState,
 ){
     Box(
@@ -24,7 +26,8 @@ fun HeroList(
             items(state.heros){ hero ->
                 HeroListItem(
                     hero = hero,
-                    onSelectHero = {}
+                    onSelectHero = {},
+                    imageLoader = imageLoader
                 )
             }
         }

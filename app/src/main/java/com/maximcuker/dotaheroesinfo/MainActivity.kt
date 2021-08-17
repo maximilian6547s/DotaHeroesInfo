@@ -13,6 +13,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import coil.ImageLoader
 import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
 import com.maximcuker.core.DataState
 import com.maximcuker.core.Logger
@@ -31,9 +32,17 @@ import kotlinx.coroutines.flow.onEach
 class MainActivity : ComponentActivity() {
 
     private val state: MutableState<HeroListState> = mutableStateOf(HeroListState())
+    private lateinit var imageLoader: ImageLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        imageLoader = ImageLoader.Builder(applicationContext)
+            .error(R.drawable.error_image)
+            .placeholder(R.drawable.white_background)
+            .availableMemoryPercentage(.25)
+            .crossfade(true)
+            .build()
 
         val getHeros = HeroInteractors.build(
             sqlDriver = AndroidSqliteDriver(
@@ -67,6 +76,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DotaInfoTheme {
                 HeroList(
+                    imageLoader = imageLoader,
                     state = state.value,
                 )
             }
