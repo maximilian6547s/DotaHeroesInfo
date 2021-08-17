@@ -1,6 +1,7 @@
 package com.maximcuker.hero_interactors
 
 import com.maximcuker.core.*
+import com.maximcuker.hero_datasource.cache.HeroCache
 import com.maximcuker.hero_datasource.network.HeroService
 import com.maximcuker.hero_domain.Hero
 import kotlinx.coroutines.delay
@@ -9,14 +10,12 @@ import kotlinx.coroutines.flow.flow
 
 class GetHeroes(
     private val service:HeroService,
-    //TODO (Add caching)
+    private val cache:HeroCache,
 ) {
     fun execute(): Flow<DataState<List<Hero>>> = flow {
         try {
             emit(DataState.Loading<List<Hero>>(progressBarState = ProgressBarState.Loading))
 
-            //for testing progressBar
-            delay(1000)
             val heroes: List<Hero> = try {
                 service.getHeroStats()
             } catch (e:Exception) {
@@ -32,9 +31,13 @@ class GetHeroes(
                 listOf()
             }
 
-            //TODO(Caching)
+            //cache the network data
+            cache.insert(heroes)
 
-            emit(DataState.Data(heroes))
+            //emit data from cache
+            val cachedHeroes = cache.selectAll()
+
+            emit(DataState.Data(cachedHeroes))
 
         } catch (e:Exception) {
             e.printStackTrace()
