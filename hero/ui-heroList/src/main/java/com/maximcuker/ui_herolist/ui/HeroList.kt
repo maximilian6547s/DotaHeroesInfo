@@ -17,23 +17,26 @@ import com.maximcuker.ui_herolist.ui.HeroListState
 fun HeroList(
     state: HeroListState,
     imageLoader: ImageLoader,
-){
+    navigateToDetailScreen: (Int) -> Unit
+) {
     Box(
         modifier = Modifier.fillMaxSize()
-    ){
+    ) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-        ){
-            items(state.heros){ hero ->
+        ) {
+            items(state.heros) { hero ->
                 HeroListItem(
                     hero = hero,
-                    onSelectHero = {},
+                    onSelectHero = { heroId ->
+                        navigateToDetailScreen(heroId)
+                    },
                     imageLoader = imageLoader,
                 )
             }
         }
-        if(state.progressBarState is ProgressBarState.Loading){
+        if (state.progressBarState is ProgressBarState.Loading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
