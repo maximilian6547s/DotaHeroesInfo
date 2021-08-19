@@ -1,4 +1,4 @@
-package com.maximcuker.ui_herolist
+package com.codingwithmitch.ui_herolist
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,12 +10,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import coil.ImageLoader
 import com.maximcuker.core.ProgressBarState
+import com.maximcuker.ui_herolist.HeroListItem
 import com.maximcuker.ui_herolist.ui.HeroListState
 
 @Composable
 fun HeroList(
-    imageLoader: ImageLoader,
     state: HeroListState,
+    imageLoader: ImageLoader,
 ){
     Box(
         modifier = Modifier.fillMaxSize()
@@ -28,7 +29,7 @@ fun HeroList(
                 HeroListItem(
                     hero = hero,
                     onSelectHero = {},
-                    imageLoader = imageLoader
+                    imageLoader = imageLoader,
                 )
             }
         }
@@ -39,3 +40,15 @@ fun HeroList(
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

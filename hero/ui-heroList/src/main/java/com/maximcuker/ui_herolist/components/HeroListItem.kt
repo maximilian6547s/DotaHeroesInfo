@@ -54,7 +54,7 @@ fun HeroListItem(
                     placeholder(if (isSystemInDarkTheme()) R.drawable.black_background else R.drawable.white_background)
                 }
             )
-            Image( // TODO(Replace with Image)
+            Image(
                 modifier = Modifier
                     .width(120.dp)
                     .height(70.dp)

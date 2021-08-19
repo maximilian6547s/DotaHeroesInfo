@@ -1,4 +1,4 @@
-package com.maximcuker.ui_herolist
+package com.maximcuker.ui_herolist.ui
 
 import com.maximcuker.core.ProgressBarState
 import com.maximcuker.hero_domain.Hero
