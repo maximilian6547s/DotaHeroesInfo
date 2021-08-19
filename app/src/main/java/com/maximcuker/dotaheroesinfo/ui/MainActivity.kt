@@ -15,6 +15,7 @@ import com.codingwithmitch.ui_herolist.HeroList
 
 import com.maximcuker.dotaheroesinfo.ui.navigation.Screen
 import com.maximcuker.ui_herodetail.HeroDetail
+import com.maximcuker.ui_herodetail.ui.HeroDetailViewModel
 import com.maximcuker.ui_herolist.ui.HeroListViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,6 +73,9 @@ fun NavGraphBuilder.addHeroDetail() {
         route = Screen.HeroDetail.route + "/{heroId}",
         arguments = Screen.HeroDetail.arguments,
     ) {
-        HeroDetail(heroId = it.arguments?.get("heroId") as Int?)
+        val viewModel: HeroDetailViewModel = hiltViewModel()
+        HeroDetail(
+            state = viewModel.state.value
+        )
     }
 }
