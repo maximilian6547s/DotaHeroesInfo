@@ -1,4 +1,4 @@
-package com.maximcuker.core
+package com.maximcuker.core.domain
 
 sealed class UIComponent {
 

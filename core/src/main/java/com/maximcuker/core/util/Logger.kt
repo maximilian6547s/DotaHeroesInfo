@@ -1,4 +1,4 @@
-package com.maximcuker.core
+package com.maximcuker.core.util
 
 class Logger(
     private val tag: String,

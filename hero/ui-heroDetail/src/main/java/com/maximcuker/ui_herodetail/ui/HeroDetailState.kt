@@ -1,6 +1,6 @@
 package com.maximcuker.ui_herodetail.ui
 
-import com.maximcuker.core.ProgressBarState
+import com.maximcuker.core.domain.ProgressBarState
 import com.maximcuker.hero_domain.Hero
 
 data class HeroDetailState(

@@ -4,9 +4,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.maximcuker.core.DataState
+import com.maximcuker.core.domain.DataState
 import com.maximcuker.core.Logger
-import com.maximcuker.core.UIComponent
+import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.hero_domain.Hero
 import com.maximcuker.hero_interactors.GetHeroes
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,6 +1,4 @@
-package com.maximcuker.core
-
-import java.util.*
+package com.maximcuker.core.domain
 
 sealed class ProgressBarState {
 

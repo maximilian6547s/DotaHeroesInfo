@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import coil.ImageLoader
-import com.maximcuker.core.ProgressBarState
+import com.maximcuker.core.domain.ProgressBarState
 import com.maximcuker.ui_herolist.HeroListItem
 import com.maximcuker.ui_herolist.components.HeroListToolbar
 import com.maximcuker.ui_herolist.ui.HeroListEvents

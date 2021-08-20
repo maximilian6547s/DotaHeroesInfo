@@ -1,10 +1,11 @@
 package com.maximcuker.hero_interactors
 
-import com.maximcuker.core.*
+import com.maximcuker.core.domain.DataState
+import com.maximcuker.core.domain.ProgressBarState
+import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.hero_datasource.cache.HeroCache
 import com.maximcuker.hero_datasource.network.HeroService
 import com.maximcuker.hero_domain.Hero
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
