@@ -1,6 +1,7 @@
 package com.maximcuker.ui_herolist.di
 
-import com.maximcuker.core.Logger
+import com.maximcuker.core.util.Logger
+import com.maximcuker.hero_interactors.FilterHeroes
 import com.maximcuker.hero_interactors.GetHeroes
 import com.maximcuker.hero_interactors.HeroInteractors
 import dagger.Module
@@ -17,7 +18,7 @@ object HeroListModule {
     @Provides
     @Singleton
     @Named("heroListLogger")
-    fun provideLogger():Logger {
+    fun provideLogger(): Logger {
         return Logger(
             tag = "HeroList",
             isDebug = true
@@ -29,7 +30,15 @@ object HeroListModule {
     fun provideGetHeroes(
         heroInteractors: HeroInteractors
     ): GetHeroes {
-        return heroInteractors.getHeros
+        return heroInteractors.getHeroes
+    }
+
+    @Provides
+    @Singleton
+    fun provideFilterHeroes(
+        interactors: HeroInteractors
+    ): FilterHeroes {
+        return interactors.filterHeroes
     }
 
 }

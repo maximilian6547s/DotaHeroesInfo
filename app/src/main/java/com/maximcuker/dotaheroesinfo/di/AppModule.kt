@@ -1,6 +1,6 @@
 package com.maximcuker.dotaheroesinfo.di
 
-import com.maximcuker.core.Logger
+import com.maximcuker.core.util.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

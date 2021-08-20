@@ -8,7 +8,7 @@ import com.maximcuker.hero_domain.HeroFilter
 data class HeroListState(
     val progressBarState: ProgressBarState = ProgressBarState.Idle,
     val heroes: List<Hero> = listOf(),
-    val filteredHeros: List<Hero> = listOf(),
+    val filteredHeroes: List<Hero> = listOf(),
     val heroName: String = "",
     val heroFilter: HeroFilter = HeroFilter.Hero(),
     val primaryAttribute: HeroAttribute = HeroAttribute.Unknown
