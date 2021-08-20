@@ -16,12 +16,14 @@ import coil.ImageLoader
 import com.maximcuker.core.ProgressBarState
 import com.maximcuker.ui_herolist.HeroListItem
 import com.maximcuker.ui_herolist.components.HeroListToolbar
+import com.maximcuker.ui_herolist.ui.HeroListEvents
 import com.maximcuker.ui_herolist.ui.HeroListState
 
 @ExperimentalComposeUiApi
 @Composable
 fun HeroList(
     state: HeroListState,
+    events: (HeroListEvents) -> Unit,
     imageLoader: ImageLoader,
     navigateToDetailScreen: (Int) -> Unit
 ) {
@@ -31,12 +33,12 @@ fun HeroList(
         Column {
             val name = remember { mutableStateOf("")}
             HeroListToolbar(
-                heroName = name.value,
+                heroName = state.heroName,
                 onHeroNameChanged = {heroName ->
-                    name.value = heroName
+                    events(HeroListEvents.UpdateHeroName(heroName))
                 },
                 onExecuteSearch = {
-                    //TODO
+                    events(HeroListEvents.FilterHeroes)
                 },
                 onShowFilterDialog = {
                     //TODO
@@ -46,7 +48,7 @@ fun HeroList(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                items(state.heros) { hero ->
+                items(state.filteredHeros) { hero ->
                     HeroListItem(
                         hero = hero,
                         onSelectHero = { heroId ->

@@ -24,7 +24,7 @@ fun HeroList(
             modifier = Modifier
                 .fillMaxSize()
         ){
-            items(state.heros){ hero ->
+            items(state.heroes){ hero ->
                 HeroListItem(
                     hero = hero,
                     onSelectHero = {},
