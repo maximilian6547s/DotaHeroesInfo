@@ -3,6 +3,7 @@ package com.maximcuker.dotaheroesinfo.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -23,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 import javax.inject.Inject
 
+@ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -52,6 +54,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 fun NavGraphBuilder.addHeroList(
     navController: NavController,

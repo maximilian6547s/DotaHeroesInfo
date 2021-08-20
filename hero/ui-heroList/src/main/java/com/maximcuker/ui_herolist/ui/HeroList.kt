@@ -1,5 +1,6 @@
 package com.codingwithmitch.ui_herolist
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,10 +16,12 @@ import androidx.compose.ui.Modifier
 import coil.ImageLoader
 import com.maximcuker.core.domain.ProgressBarState
 import com.maximcuker.ui_herolist.HeroListItem
+import com.maximcuker.ui_herolist.components.HeroListFilter
 import com.maximcuker.ui_herolist.components.HeroListToolbar
 import com.maximcuker.ui_herolist.ui.HeroListEvents
 import com.maximcuker.ui_herolist.ui.HeroListState
 
+@ExperimentalAnimationApi
 @ExperimentalComposeUiApi
 @Composable
 fun HeroList(
@@ -31,10 +34,10 @@ fun HeroList(
         modifier = Modifier.fillMaxSize()
     ) {
         Column {
-            val name = remember { mutableStateOf("")}
+            val name = remember { mutableStateOf("") }
             HeroListToolbar(
                 heroName = state.heroName,
-                onHeroNameChanged = {heroName ->
+                onHeroNameChanged = { heroName ->
                     events(HeroListEvents.UpdateHeroName(heroName))
                 },
                 onExecuteSearch = {
@@ -58,8 +61,16 @@ fun HeroList(
                     )
                 }
             }
-
         }
+
+        HeroListFilter(
+            heroFilter = state.heroFilter,
+            onUpdateHeroFilter = {
+                events(HeroListEvents.UpdateHeroFilter(it))
+            },
+        onCloseDialog = {
+
+        })
         if (state.progressBarState is ProgressBarState.Loading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)

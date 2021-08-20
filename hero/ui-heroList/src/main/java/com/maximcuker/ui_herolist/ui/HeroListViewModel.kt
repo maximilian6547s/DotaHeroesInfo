@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.maximcuker.core.domain.DataState
 import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.core.util.Logger
+import com.maximcuker.hero_domain.HeroFilter
 import com.maximcuker.hero_interactors.FilterHeroes
 import com.maximcuker.hero_interactors.GetHeroes
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,11 +42,19 @@ constructor(
             is HeroListEvents.UpdateHeroName -> {
                 updateHeroName(event.heroName)
             }
+            is HeroListEvents.UpdateHeroFilter -> {
+                updateHeroFilter(event.heroFilter)
+            }
         }
     }
 
     private fun updateHeroName(heroName:String) {
         state.value = state.value.copy(heroName = heroName)
+    }
+
+    private fun updateHeroFilter(heroFilter: HeroFilter) {
+        state.value= state.value.copy(heroFilter = heroFilter)
+        filterHeroes()
     }
 
     private fun filterHeroes() {
