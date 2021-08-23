@@ -1,5 +1,6 @@
 package com.maximcuker.ui_herolist.ui
 
+import com.maximcuker.core.domain.UIComponentState
 import com.maximcuker.hero_domain.HeroFilter
 
 sealed class HeroListEvents {
@@ -14,5 +15,9 @@ sealed class HeroListEvents {
 
     data class UpdateHeroFilter(
         val heroFilter: HeroFilter
+    ): HeroListEvents()
+
+    data class UpdateFilterDialogState(
+        val uiComponentState: UIComponentState
     ): HeroListEvents()
 }

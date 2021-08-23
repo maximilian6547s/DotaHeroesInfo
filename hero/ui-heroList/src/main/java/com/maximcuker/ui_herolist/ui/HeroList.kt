@@ -15,6 +15,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import coil.ImageLoader
 import com.maximcuker.core.domain.ProgressBarState
+import com.maximcuker.core.domain.UIComponentState
 import com.maximcuker.ui_herolist.HeroListItem
 import com.maximcuker.ui_herolist.components.HeroListFilter
 import com.maximcuker.ui_herolist.components.HeroListToolbar
@@ -44,7 +45,7 @@ fun HeroList(
                     events(HeroListEvents.FilterHeroes)
                 },
                 onShowFilterDialog = {
-                    //TODO
+                    events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Show))
                 }
             )
             LazyColumn(
@@ -63,14 +64,17 @@ fun HeroList(
             }
         }
 
-        HeroListFilter(
-            heroFilter = state.heroFilter,
-            onUpdateHeroFilter = {
-                events(HeroListEvents.UpdateHeroFilter(it))
-            },
-        onCloseDialog = {
+        if (state.filterDialogState is UIComponentState.Show) {
+            HeroListFilter(
+                heroFilter = state.heroFilter,
+                onUpdateHeroFilter = {
+                    events(HeroListEvents.UpdateHeroFilter(it))
+                },
+                onCloseDialog = {
+                    events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Hide))
+                })
+        }
 
-        })
         if (state.progressBarState is ProgressBarState.Loading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
