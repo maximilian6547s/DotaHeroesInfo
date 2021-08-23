@@ -1,6 +1,8 @@
 package com.maximcuker.ui_herolist.ui
 
 import com.maximcuker.core.domain.ProgressBarState
+import com.maximcuker.core.domain.Queue
+import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.core.domain.UIComponentState
 import com.maximcuker.hero_domain.Hero
 import com.maximcuker.hero_domain.HeroAttribute
@@ -14,4 +16,5 @@ data class HeroListState(
     val heroFilter: HeroFilter = HeroFilter.Hero(),
     val primaryAttribute: HeroAttribute = HeroAttribute.Unknown,
     val filterDialogState: UIComponentState = UIComponentState.Hide,
+    val errorQueue: Queue<UIComponent> = Queue(mutableListOf()),
 )
