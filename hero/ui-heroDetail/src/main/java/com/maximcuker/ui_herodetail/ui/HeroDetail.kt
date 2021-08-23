@@ -25,18 +25,20 @@ import com.maximcuker.hero_domain.Hero
 import com.maximcuker.hero_domain.maxAttackDmg
 import com.maximcuker.hero_domain.minAttackDmg
 import com.maximcuker.ui_herodetail.R
+import com.maximcuker.ui_herodetail.ui.HeroDetailEvents
 import com.maximcuker.ui_herodetail.ui.HeroDetailState
 import kotlin.math.round
 
 @Composable
 fun HeroDetail(
     state: HeroDetailState,
+    events: (HeroDetailEvents) -> Unit,
     imageLoader: ImageLoader,
 ) {
     DefaultScreenUI(
         queue = state.errorQueue,
         onRemoveHeadFromQueue = {
-            //TODO (Remove message from queue)
+            events(HeroDetailEvents.OnRemoveHeadFromQueue)
         },
         progressBarState = state.progressBarState
     ) {
