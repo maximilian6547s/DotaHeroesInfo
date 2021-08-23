@@ -72,7 +72,13 @@ fun HeroList(
                 },
                 onCloseDialog = {
                     events(HeroListEvents.UpdateFilterDialogState(UIComponentState.Hide))
-                })
+                },
+                attributeFilter = state.primaryAttribute,
+                onUpdateAttributeFilter = { heroAttr ->
+                    events(HeroListEvents.UpdateAttributeFilter(heroAttr))
+
+                }
+                )
         }
 
         if (state.progressBarState is ProgressBarState.Loading) {

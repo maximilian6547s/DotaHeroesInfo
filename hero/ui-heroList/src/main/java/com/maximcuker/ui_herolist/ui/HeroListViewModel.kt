@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.maximcuker.core.domain.DataState
 import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.core.util.Logger
+import com.maximcuker.hero_domain.HeroAttribute
 import com.maximcuker.hero_domain.HeroFilter
 import com.maximcuker.hero_interactors.FilterHeroes
 import com.maximcuker.hero_interactors.GetHeroes
@@ -48,7 +49,15 @@ constructor(
             is HeroListEvents.UpdateFilterDialogState -> {
                 state.value = state.value.copy(filterDialogState = event.uiComponentState)
             }
+            is HeroListEvents.UpdateAttributeFilter -> {
+                updateAttributeFilter(event.attribute)
+            }
         }
+    }
+
+    private fun updateAttributeFilter(attribute: HeroAttribute) {
+        state.value = state.value.copy(primaryAttribute = attribute)
+        filterHeroes()
     }
 
     private fun updateHeroName(heroName:String) {
