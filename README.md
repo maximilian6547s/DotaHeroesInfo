@@ -1,4 +1,5 @@
 # DotaHeroesInfo
+Not finished but already works<br>
 Multi-module demo app that gets data from a Dota2 api<br>
 Dota heroes application<br>
 training application from course:<br>
