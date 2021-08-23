@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import coil.ImageLoader
+import com.maximcuker.components.DefaultScreenUI
 import com.maximcuker.core.domain.ProgressBarState
 import com.maximcuker.core.domain.UIComponentState
 import com.maximcuker.ui_herolist.HeroListItem
@@ -31,8 +32,8 @@ fun HeroList(
     imageLoader: ImageLoader,
     navigateToDetailScreen: (Int) -> Unit
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize()
+    DefaultScreenUI(
+        progressBarState = state.progressBarState
     ) {
         Column {
             val name = remember { mutableStateOf("") }
@@ -78,14 +79,10 @@ fun HeroList(
                     events(HeroListEvents.UpdateAttributeFilter(heroAttr))
 
                 }
-                )
-        }
-
-        if (state.progressBarState is ProgressBarState.Loading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
             )
         }
+
+
     }
 }
 
