@@ -56,6 +56,8 @@ dependencies{
     implementation(AndroidX.appCompat)
     implementation(AndroidX.lifecycleVmKtx)
 
+    implementation(Accompanist.animations)
+
     implementation(Coil.coil)
 
     implementation(Compose.activity)
