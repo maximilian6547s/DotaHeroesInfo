@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maximcuker.core.domain.DataState
+import com.maximcuker.core.domain.Queue
 import com.maximcuker.core.domain.UIComponent
 import com.maximcuker.core.util.Logger
 import com.maximcuker.hero_domain.HeroAttribute
@@ -86,6 +87,7 @@ constructor(
                 is DataState.Response -> {
                     when (dataState.uiComponent) {
                         is UIComponent.Dialog -> {
+                            appendToMessageQueue(dataState.uiComponent)
                             logger.log((dataState.uiComponent as UIComponent.Dialog).description)
                         }
                         is UIComponent.None -> {
@@ -102,5 +104,12 @@ constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun appendToMessageQueue(uiComponent:UIComponent) {
+        val queue = state.value.errorQueue
+        queue.add(uiComponent)
+        state.value = state.value.copy(errorQueue = Queue(mutableListOf())) //force recompose
+        state.value = state.value.copy(errorQueue = queue)
     }
 }
