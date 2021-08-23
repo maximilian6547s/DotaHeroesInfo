@@ -22,7 +22,7 @@ class HeroDetailViewModel
 constructor(
     private val getHeroFromCache: GetHeroFromCache,
     private val savedStateHandle: SavedStateHandle,
-    private @Named("heroDetailLogger")val logger: Logger
+    private val logger: Logger
 ): ViewModel(){
     val state: MutableState<HeroDetailState> = mutableStateOf(HeroDetailState())
 

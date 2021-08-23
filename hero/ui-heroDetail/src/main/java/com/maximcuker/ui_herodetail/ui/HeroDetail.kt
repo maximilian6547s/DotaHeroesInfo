@@ -34,6 +34,10 @@ fun HeroDetail(
     imageLoader: ImageLoader,
 ) {
     DefaultScreenUI(
+        queue = state.errorQueue,
+        onRemoveHeadFromQueue = {
+            //TODO (Remove message from queue)
+        },
         progressBarState = state.progressBarState
     ) {
         state.hero?.let { hero ->

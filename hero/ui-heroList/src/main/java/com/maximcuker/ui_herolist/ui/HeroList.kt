@@ -33,6 +33,10 @@ fun HeroList(
     navigateToDetailScreen: (Int) -> Unit
 ) {
     DefaultScreenUI(
+        queue = state.errorQueue,
+        onRemoveHeadFromQueue = {
+                                //TODO (Remove message from queue)
+        },
         progressBarState = state.progressBarState
     ) {
         Column {
