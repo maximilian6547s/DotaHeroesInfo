@@ -1,4 +1,4 @@
-package com.maximcuker.ui_herodetail
+package com.maximcuker.ui_herodetail.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
