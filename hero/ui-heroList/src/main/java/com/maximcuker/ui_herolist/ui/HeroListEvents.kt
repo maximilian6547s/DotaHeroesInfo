@@ -6,7 +6,7 @@ import com.maximcuker.hero_domain.HeroFilter
 
 sealed class HeroListEvents {
 
-    object GetHeros : HeroListEvents()
+    object GetHeroes : HeroListEvents()
 
     object FilterHeroes: HeroListEvents()
 
