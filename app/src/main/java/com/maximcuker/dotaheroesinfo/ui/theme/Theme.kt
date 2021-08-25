@@ -1,11 +1,13 @@
-package com.codingwithmitch.dotainfo.ui.theme
+package com.maximcuker.dotaheroesinfo.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.codingwithmitch.dotainfo.ui.theme.*
 
 private val DarkColorPalette = darkColors(
     primary = Blue300,
@@ -22,6 +24,7 @@ private val DarkColorPalette = darkColors(
     onSurface = Color.White,
 )
 
+@SuppressLint("ConflictingOnColor")
 private val LightColorPalette = lightColors(
     primary = Blue600,
     primaryVariant = Blue400,

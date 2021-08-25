@@ -1,4 +1,4 @@
-package com.codingwithmitch.ui_herolist
+package com.maximcuker.ui_herolist
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box

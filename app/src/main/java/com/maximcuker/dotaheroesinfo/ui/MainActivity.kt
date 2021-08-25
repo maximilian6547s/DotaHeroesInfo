@@ -12,15 +12,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import coil.ImageLoader
-import com.codingwithmitch.dotainfo.ui.theme.DotaInfoTheme
-import com.codingwithmitch.ui_herolist.HeroList
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-
 import com.maximcuker.dotaheroesinfo.ui.navigation.Screen
-import com.maximcuker.ui_herodetail.HeroDetail
+import com.maximcuker.dotaheroesinfo.ui.theme.DotaInfoTheme
+import com.maximcuker.ui_herodetail.ui.HeroDetail
 import com.maximcuker.ui_herodetail.ui.HeroDetailViewModel
+import com.maximcuker.ui_herolist.HeroList
 import com.maximcuker.ui_herolist.ui.HeroListViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
